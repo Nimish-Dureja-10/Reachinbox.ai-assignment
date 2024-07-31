@@ -10,9 +10,8 @@ import MailCard from '../components/MailCard';
 import { BsFillReplyFill } from "react-icons/bs";
 import { BiLogoGmail } from 'react-icons/bi';
 import { IoMailOutline } from "react-icons/io5";
-import { FaMoon, FaSun} from 'react-icons/fa'
 
-const Onebox = () => {
+const Test = () => {
   const [emails, setEmails] = useState([]);
   const [email, setEmail] = useState({});
   const [i, setI] = useState(1);
@@ -53,14 +52,6 @@ const Onebox = () => {
 
   return (
     <div className={isLightMode ? 'light-mode' : ''}>
-      {/* Toggle Button */}
-      <button
-        onClick={() => setIsLightMode(!isLightMode)}
-        className='fixed top-3 right-44 p-3 rounded-2xl bg-gray-500 text-white z-10'
-      >
-        {isLightMode ? <FaMoon /> : <FaSun />}
-      </button>
-
       <div className='flex flex-col'>
         <div>
           <OneboxTopNavbar />
@@ -68,8 +59,8 @@ const Onebox = () => {
             <OneboxNavbar />
             <div className='w-1/4 bg-black p-4 border-r-2 border-gray-700'>
               <div className='flex flex-col gap-2 h-screen overflow-y-scroll scroll-smooth'>
-                <div className='flex justify-between'>
-                  <h2 className='text-xl text-blue-500 flex items-center gap-2'>All Inbox(s) <span><FaAngleDown /></span></h2>
+                <div className='flex justify-between '>
+                  <h2 className='text-xl text-blue-500 flex items-center gap-2'>All Inbox(s) <span ><FaAngleDown /></span></h2>
                   <button className='text-white bg-neutral-700 py-1 px-3 rounded'><MdOutlineRefresh /></button>
                 </div>
                 <div>
@@ -83,27 +74,28 @@ const Onebox = () => {
                   <p className='text-white'>New Replies</p>
                   <p className='text-white ml-20 flex items-center gap-4'>Newest <FaAngleDown /></p>
                 </div>
-                {emails && emails.map((mail) => (
-                  <div className='border-t border-gray-500 mt-2 p-2 cursor-pointer' key={mail.id} onClick={() => handleClick(mail.id)}>
-                    <div className='flex justify-between items-center mt-2'>
-                      <h4 className='text-lg text-white'>{mail?.from}</h4>
-                      <p className='text-gray-500'>{mail?.date?.slice(0, 6)}</p>
+                {
+                  emails && emails?.map((mail) => (
+                    <div className='border-t border-gray-500 mt-2 p-2 cursor-pointer' key={mail.id} onClick={() => handleClick(mail.id)}>
+                      <div className='flex justify-between items-center mt-2'>
+                        <h4 className='text-lg text-white'>{mail?.from}</h4>
+                        <p className='text-gray-500'>{mail?.date?.slice(0, 6)}</p>
+                      </div>
+                      <p className='text-gray-100 font-thin'>
+                        {mail?.subject?.length > 20
+                          ? mail?.subject?.slice(0, 20) + '...'
+                          : mail?.subject}
+                      </p>
+                      <div className='flex gap-4 mt-4'>
+                        <p className='text-green-400 bg-zinc-800 py-1 px-4 rounded-3xl'><span className='text-green-400 h-2 w-2 rounded-full'></span> Interested</p>
+                        <p className='text-gray-100 bg-zinc-800 py-1 px-4 rounded-3xl flex items-center gap-1'><span><RiSendPlaneFill /></span> Campaign Name</p>
+                      </div>
                     </div>
-                    <p className='text-gray-100 font-thin'>
-                      {mail?.subject?.length > 20
-                        ? mail?.subject?.slice(0, 20) + '...'
-                        : mail?.subject}
-                    </p>
-                    <div className='flex gap-4 mt-4'>
-                      <p className='text-green-400 bg-zinc-800 py-1 px-4 rounded-3xl'><span className='text-green-400 h-2 w-2 rounded-full'></span> Interested</p>
-                      <p className='text-gray-100 bg-zinc-800 py-1 px-4 rounded-3xl flex items-center gap-1'><span><RiSendPlaneFill /></span> Campaign Name</p>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
             </div>
             <div className='bg-black w-1/2 border-r-2 border-gray-700 flex flex-col'>
-            {i ? <h2 className='text-white text-4xl items-center m-auto'><BiLogoGmail className='bg-white p-2 text-black w-28 h-28 ml-3' /></h2> : <>
               <div className='h-20 border-b-2 border-gray-500 py-4 px-8 flex justify-between items-center'>
                 <div>
                   <h2 className='text-white'>Nimish Dureja</h2>
@@ -123,7 +115,7 @@ const Onebox = () => {
                   <button className='bg-zinc-800 text-white py-1 px-2 rounded'><BsThreeDots /></button>
                 </div>
               </div>
-              
+              {i ? <h2 className='text-white text-4xl items-center m-auto'><BiLogoGmail className='bg-white p-2 text-black w-28 h-28 ml-3' /></h2> : <>
                 <hr className='bg-gray-700 relative top-8 w-1/3 left-16 h-px' />
                 <hr className='bg-gray-700 relative top-8 w-1/3 left-96 h-px' />
                 <div className='flex flex-col items-center mt-4'>
@@ -149,84 +141,34 @@ const Onebox = () => {
                 <h4 className='text-lg text-gray-100 bg-zinc-800 py-1 px-4 rounded'>Lead Details</h4>
                 <div className='flex justify-between p-2 mt-4'>
                   <h5 className='text-white'>Name </h5>
-                  <p className='text-gray-400'>Nimish </p>
+                  <p className='text-gray-400 '>Nimish </p>
                 </div>
                 <div className='flex justify-between p-2'>
-                  <h5 className='text-white'>Contact No </h5>
-                  <p className='text-gray-400'>+91-8810437210 </p>
+                  <h5 className='text-white'>Email </h5>
+                  <p className='text-gray-400 '>durejanimish14@gmail.com</p>
                 </div>
                 <div className='flex justify-between p-2'>
-                  <h5 className='text-white'>Email ID </h5>
-                  <p className='text-gray-400'>durejanimish14@gmail.com </p>
+                  <h5 className='text-white'>Phone </h5>
+                  <p className='text-gray-400 '>+123456789</p>
                 </div>
-                <div className='flex justify-between p-2 mt-4'>
-                  <h5 className='text-white'>Linkedin </h5>
-                  <p className='text-gray-400'>linkedin.com/in/nimish-dureja </p>
+                <div className='flex justify-between p-2'>
+                  <h5 className='text-white'>Location </h5>
+                  <p className='text-gray-400 '>New York</p>
                 </div>
-                <div className='flex justify-between p-2 mt-4'>
-                  <h5 className='text-white'>Company Name </h5>
-                  <p className='text-gray-400'>Reachinbox </p>
-                </div>
-              </div>
-              <div className=''>
-                <div className='flex flex-col py-4 px-2'>
-                  <h4 className='text-lg text-gray-100 bg-zinc-800 py-1 px-4 rounded'>Activities</h4>
-                </div>
-                <div className='py-4 px-8'>
-                  <h4 className='text-gray-100 text-lg mb-2'>Campaign Name</h4>
-                  <div className='flex'>
-                    <p className='text-gray-200 mr-6'>3 steps</p>
-                    <p className='text-white border-l border-gray-600 pl-4 font-thin'>5 Days in Sequence</p>
-                  </div>
-                  <div className='flex text-white items-center gap-10'>
-                    <div className='mt-8'>
-                      <IoMailOutline className='h-8 w-8 bg-gray-700 py-1 px-2 rounded-full' />
-                    </div>
-                    <div className='flex flex-col items-center mt-8'>
-                      <div>
-                        <h4>Step 1: Email</h4>
-                      </div>
-                      <div>
-                        <p className='text-gray-400 font-thin text-sm flex items-center gap-1'><span><RiSendPlaneFill /></span> Sent 3rd, Feb</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='flex text-white items-center gap-10'>
-                    <div className='mt-8'>
-                      <IoMailOutline className='h-8 w-8 bg-gray-700 py-1 px-2 rounded-full' />
-                    </div>
-                    <div className='flex flex-col items-center mt-8'>
-                      <div>
-                        <h4>Step 2: Email</h4>
-                      </div>
-                      <div>
-                        <p className='text-gray-400 font-thin text-sm flex items-center gap-1'><span><RiSendPlaneFill /></span> Sent 3rd, Feb</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className='flex text-white items-center gap-10'>
-                    <div className='mt-8'>
-                      <IoMailOutline className='h-8 w-8 bg-gray-700 py-1 px-2 rounded-full' />
-                    </div>
-                    <div className='flex flex-col items-center mt-8'>
-                      <div>
-                        <h4>Step 3: Email</h4>
-                      </div>
-                      <div>
-                        <p className='text-gray-400 font-thin text-sm flex items-center gap-1'><span><RiSendPlaneFill /></span> Sent 3rd, Feb</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                <button className='bg-zinc-800 text-white py-1 px-2 mt-4 rounded'><BsThreeDots /></button>
               </div>
             </div>
           </div>
-          <div>
-          </div>
         </div>
       </div>
+      <button
+        onClick={() => setIsLightMode(!isLightMode)}
+        className='fixed bottom-4 right-4 p-2 rounded-full bg-gray-800 text-white'
+      >
+        Toggle Mode
+      </button>
     </div>
   );
 };
 
-export default Onebox;
+export default Test;

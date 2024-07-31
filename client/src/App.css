@@ -3,3 +3,35 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.light-mode {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --border-color: #cccccc;
+  --button-bg-color: #e0e0e0;
+  --button-text-color: #000000;
+}
+
+.light-mode .bg-black {
+  background-color: var(--bg-color);
+}
+
+.light-mode .text-white {
+  color: var(--text-color);
+}
+
+.light-mode .border-gray-700 {
+  border-color: var(--border-color);
+}
+
+.light-mode .bg-zinc-800 {
+  background-color: var(--button-bg-color);
+}
+
+.light-mode .text-gray-100 {
+  color: var(--text-color);
+}
+
+.light-mode .bg-neutral-700 {
+  background-color: var(--button-bg-color);
+}
