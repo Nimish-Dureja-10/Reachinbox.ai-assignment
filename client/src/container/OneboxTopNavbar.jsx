@@ -5,7 +5,7 @@ import { FaMoon, FaSun} from 'react-icons/fa'
 const OneboxTopNavbar = () => {
 
     const handleLogout = () => {
-        window.location.href = "http://localhost:3000"
+        window.location.href = "https://reachinbox-ai-assignment.vercel.app"
     }
 
     const handleSelectChange = (event) => {
